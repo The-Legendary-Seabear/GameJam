@@ -24,7 +24,13 @@ namespace CGL.Inventory
 		[Tooltip("Raised each time this weapon fires — use for muzzle flash, sound, recoil animation.")]
 		private EventSO onFireEvent;
 
-		private int ammoCount = 0;
+        [SerializeField] private Transform punchPoint;
+        public void SetPunchPoint(Transform point)
+        {
+            punchPoint = point;
+        }
+
+        private int ammoCount = 0;
 		private bool weaponReady = false;
 		private IEnumerator autoFireCoroutine;
 
@@ -160,7 +166,12 @@ namespace CGL.Inventory
 
 			// pass owner to melee ammo so it can exclude the player from hit detection
 			MeleeAmmo meleeAmmo = go.GetComponent<MeleeAmmo>();
-			if (meleeAmmo != null) meleeAmmo.Owner = transform.root;
+			if (meleeAmmo != null) { 
+				meleeAmmo.Owner = transform.root;
+                if (punchPoint != null)
+                    meleeAmmo.SetPunchPoint(punchPoint);
+                //meleeAmmo.ammoData = weaponData.ammoData;
+            }
 
 			// decrement ammo if not infinite
 			if (weaponData.rounds > 0) ammoCount--;

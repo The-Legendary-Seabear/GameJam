@@ -71,5 +71,11 @@ namespace CGL.Actor
 			onDeath?.Invoke();
 			onPlayerDeathEvent?.RaiseEvent(gameObject);
 		}
-	}
+
+        public void HandleDeathEvent()
+        {
+            OnDeath();
+            Debug.Log("Player died");
+        }
+    }
 }

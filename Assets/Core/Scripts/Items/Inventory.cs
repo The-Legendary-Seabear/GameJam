@@ -41,8 +41,11 @@ namespace CGL.Inventory
 		[Tooltip("Raised when an item is removed from the inventory.")]
 		private EventSO onItemRemovedEvent;
 
-		// runtime list of items in the inventory
-		private List<Item> items = new List<Item>();
+        [SerializeField] private Transform punchPoint;
+        public Transform GetPunchPoint() => punchPoint;
+
+        // runtime list of items in the inventory
+        private List<Item> items = new List<Item>();
 
 		public Item CurrentItem { get; private set; }
 		public int ItemCount => items.Count;
@@ -128,7 +131,14 @@ namespace CGL.Inventory
 			// equip new item
 			currentItemIndex = index;
 			CurrentItem = items[currentItemIndex];
-			CurrentItem?.Equip();
+
+            Weapon weapon = CurrentItem as Weapon;
+            if (weapon != null)
+            {
+                weapon.SetPunchPoint(punchPoint);
+            }
+
+            CurrentItem?.Equip();
 
 			// pass current item so listeners know what was equipped
 			onItemChangedEvent?.RaiseEvent(CurrentItem);

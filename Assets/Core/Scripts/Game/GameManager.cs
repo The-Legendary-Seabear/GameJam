@@ -274,7 +274,14 @@ namespace CGL.Core
 		{
 			yield return new WaitForSeconds(respawnDelay);
 			Destroy(player);
-			StartLevel();
+
+            foreach (var existing in FindObjectsOfType<Player>())
+            {
+                if (existing.gameObject != player)
+                    Destroy(existing.gameObject);
+            }
+
+            StartLevel();
 		}
 	}
 }

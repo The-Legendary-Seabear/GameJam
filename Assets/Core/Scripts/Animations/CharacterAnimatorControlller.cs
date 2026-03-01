@@ -33,12 +33,20 @@ namespace CGL.Animation
 		private string deathParameter = "Death";
 
 		[SerializeField]
+		[Tooltip("Animator trigger parameter name for damage")]
+		private string damageParameter = "Damage";
+
+        [SerializeField]
 		[Tooltip("Raised when the actor dies.")]
 		private EventSO onDeathEvent;
 
 		[SerializeField]
 		[Tooltip("Raised when the actor jumps. Subscribe to set jump trigger.")]
 		private EventSO onJumpEvent;
+
+		[SerializeField]
+		[Tooltip("Raised when the actor is damaged")]
+		private EventSO onDamageEvent;
 
 		private AnimatorController animatorController;
 		private CharacterControllerBase controller;
@@ -49,6 +57,7 @@ namespace CGL.Animation
 		private int fallingHash;
 		private int jumpHash;
 		private int deathHash;
+		private int damageHash;
 
 		private void Awake()
 		{
@@ -64,18 +73,21 @@ namespace CGL.Animation
 			fallingHash = Animator.StringToHash(fallingParameter);
 			jumpHash = Animator.StringToHash(jumpParameter);
 			deathHash = Animator.StringToHash(deathParameter);
+			damageHash = Animator.StringToHash(damageParameter);
 		}
 
 		private void OnEnable()
 		{
 			onJumpEvent?.Subscribe(OnJump);
 			onDeathEvent?.Subscribe(OnDeath);
+			onDamageEvent?.Subscribe(OnDamage);
 		}
 
 		private void OnDisable()
 		{
 			onJumpEvent?.Unsubscribe(OnJump);
 			onDeathEvent?.Unsubscribe(OnDeath);
+			onDamageEvent?.Unsubscribe(OnDamage);
 		}
 
 		private void LateUpdate()
@@ -98,6 +110,11 @@ namespace CGL.Animation
 		private void OnDeath()
 		{
 			animatorController.Animator.SetTrigger(deathHash);
+		}
+
+		private void OnDamage()
+		{
+			animatorController.Animator.SetTrigger(damageHash);
 		}
 	}
 }
