@@ -5,12 +5,21 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/TestScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
   - enabled: 1
     path: Assets/Core/Examples/Scenes/Bootstrapper.unity
     guid: 5ff4c8af0dac8204cbe0479bf815c474
+  - enabled: 1
+    path: Assets/Scenes/Forest/Scenes/MoodyNight.unity
+    guid: df158d4fec0503e4ebf0b3d8164a07be
+  - enabled: 1
+    path: Assets/Scenes/Desert/Runemark Studio/Freebies/Polygon Desert Pack/DesertScene.unity
+    guid: 53f5a0914b195b74abc2fb43a9e2ce22
+  - enabled: 1
+    path: Assets/Scenes/Volcano/Volcano.unity
+    guid: f8333627f401f97458a2c144c7eb48c7
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0
