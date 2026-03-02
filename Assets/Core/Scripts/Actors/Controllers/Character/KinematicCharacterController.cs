@@ -49,11 +49,16 @@ namespace CGL.Controller
 
 		protected void CheckGrounded()
 		{
-			isGrounded = Physics.Raycast(transform.position, Vector3.down, groundCheckDistance, groundLayerMask);
+            //isGrounded = Physics.Raycast(transform.position, Vector3.down, groundCheckDistance, groundLayerMask);
 
-			// clear vertical velocity when grounded
-			if (isGrounded && velocity.y < 0) velocity.y = -2.0f;
-		}
+            //// clear vertical velocity when grounded
+            //if (isGrounded && velocity.y < 0) velocity.y = -2.0f;
+
+            isGrounded = characterController.isGrounded;
+
+            if (isGrounded && velocity.y < 0)
+                velocity.y = -2.0f;
+        }
 
 		protected override void Move()
 		{
