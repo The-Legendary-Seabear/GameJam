@@ -100,11 +100,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17ca8a848870fb44886d51b28bca239f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CGL.Actor.Health
-  maxHealth: 1
+  maxHealth: 1000
   destroyOnDeath: 1
   onDamageTaken:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1973518222051286637}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onHeal:
     m_PersistentCalls:
       m_Calls: []
@@ -192,13 +204,13 @@ MonoBehaviour:
   sprintData: {fileID: 11400000, guid: e791b6d3d961ca044a09b9d61c0ecd63, type: 2}
   onJumpEvent: {fileID: 11400000, guid: 17be72ca41011b94293b672b8a509e7b, type: 2}
   gravity: 9.81
-  fallGravity: 15
+  fallGravity: 30
   groundLayerMask:
     serializedVersion: 2
     m_Bits: 4294967295
   groundCheckDistance: 1.2
   rotateTowardsSpeed: 10
-  pushForce: 0.1
+  pushForce: 1
   canPush: 1
 --- !u!114 &2819056578739658984
 MonoBehaviour:
@@ -365,7 +377,7 @@ Transform:
   m_GameObject: {fileID: 4297645145676892979}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.001, y: 0.084, z: 0.652}
+  m_LocalPosition: {x: 0, y: 0.045, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
