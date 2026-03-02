@@ -46,7 +46,7 @@ namespace CGL.Inventory
 				//ammoData.meleeRadius, ammoData.hitLayerMask);
 				ammoData.meleeRadius, enemyMask);
             Debug.Log($"Melee hit {hits.Length} colliders");
-
+            //Gizmos.DrawWireSphere(punchPoint.position, ammoData.meleeRadius);
             Debug.DrawRay(punchPoint.position, Vector3.up * 0.5f, Color.red, 1f);
 
             /*
@@ -86,14 +86,21 @@ namespace CGL.Inventory
 		protected override void OnCollisionStay(Collision collision) { }
 
 #if UNITY_EDITOR
-		private void OnDrawGizmosSelected()
-		{
-			if (ammoData == null) return;
-			Gizmos.color = Color.red;
-			Gizmos.DrawWireSphere(
-				transform.position + transform.TransformDirection(ammoData.meleeOffset),
-				ammoData.meleeRadius);
-		}
+        //private void OnDrawGizmosSelected()
+        //{
+        //	if (ammoData == null) return;
+        //	Gizmos.color = Color.red;
+        //	Gizmos.DrawWireSphere(
+        //		transform.position + transform.TransformDirection(ammoData.meleeOffset),
+        //		ammoData.meleeRadius);
+        //}
+        private void OnDrawGizmos()
+        {
+            if (ammoData == null) return;
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(
+                punchPoint.position, ammoData.meleeRadius * 2);
+        }
 #endif
-	}
+    }
 }

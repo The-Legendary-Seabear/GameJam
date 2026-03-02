@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.AI;
 
 public class AIDeathState : AiState
 {
@@ -8,8 +9,10 @@ public class AIDeathState : AiState
         agent.animator.SetTrigger("Death");
         agent.movement.Destination = agent.transform.position;
 
-        //var navMeshAgent = agent.GetComponent<NavMeshAgent>();
-        //if(navMeshAgent != null) navMeshAgent.enabled = false;
+        agent.movement.enabled = false;
+
+        var navMeshAgent = agent.GetComponent<NavMeshAgent>();
+        if(navMeshAgent != null) navMeshAgent.enabled = false;
 
         GameObject.Destroy(agent.gameObject, 5.0f);
     }
